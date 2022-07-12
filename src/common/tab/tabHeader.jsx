@@ -11,7 +11,7 @@ class TabHeader extends Component {
 
     render(){
    
-
+console.log(this.props.target)
         return show(this.props)
     }
 }
@@ -20,6 +20,9 @@ function show(props){
 
     const selected = props.tab.selected === props.target
     const visible = props.tab.visible[props.target]
+    console.log(props.target)
+    console.log(props.target)
+    console.log(props.target)
 
     if(visible){
         return(

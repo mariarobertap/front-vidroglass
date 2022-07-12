@@ -22,7 +22,7 @@ function GetMenuAdmin(){
         <ul className='sidebar-menu'>
         <MenuItem path='#/' label='Dashboard' icon='dashboard' />
         <MenuTree label='Nota' icon='edit'> 
-            <MenuItem path='#billingCycles'
+            <MenuItem path='#notas'
                 label='Gerar Nota' icon='usd' />
         </MenuTree>
         

@@ -12,6 +12,7 @@ class TabContent extends Component {
 
 function show(props){
     const visible = props.tab.visible[props.id]
+    console.log(visible)
     const selected =props.tab.selected === props.id
 
     if(visible){
