@@ -1,13 +1,13 @@
 
 
-body h1 {
+.invoice-box h1 {
     font-weight: 300;
     margin-bottom: 0px;
     padding-bottom: 0px;
     color: #000;
 }
 
-body h3 {
+.invoice-box h3 {
     font-weight: 300;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -15,12 +15,14 @@ body h3 {
     color: #555;
 }
 
-body a {
+.invoice-box a {
     color: #06f;
 }
 
 
+
 .invoice-box {
+    
     max-width: 800px;
     margin: auto;
     padding: 30px;
@@ -33,6 +35,7 @@ body a {
     font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
     text-align: center;
     font-size: large;
+    background-color: white;
 }
 
 .invoice-box table {
