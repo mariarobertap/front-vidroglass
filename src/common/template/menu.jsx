@@ -28,14 +28,14 @@ function GetMenuAdmin(){
         
         <MenuTree label='Clientes' icon='edit'> 
             <MenuItem path='#clientes'
-                label='Cadastrar Clientes' icon='usd' />
+                label='Listar clientes' icon='usd' />
             <MenuItem path='#clientes'
                 label='Cadastrar Enderecos' icon='usd' />
         </MenuTree>
 
         <MenuTree label='Produto' icon='edit'> 
             <MenuItem path='#billingCycles'
-                label='Cadastrar Tipo Produto' icon='usd' />
+                label='Listar produtos' icon='usd' />
             <MenuItem path='#billingCycles'
                 label='Cadastrar Produto' icon='usd' />
         </MenuTree>
