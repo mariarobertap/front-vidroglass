@@ -6,6 +6,8 @@ import BillingCycle from '../billingCycle/billingCycle'
 import Cliente from '../clientes/clientes'
 import invoice from '../invoice/invoice'
 import Produto from '../product/product'
+import Tipo_Produto from '../productType/productType'
+
 
 export default props => (
     <Router history={hashHistory}>
@@ -14,6 +16,8 @@ export default props => (
         <Route path='/notas' component={invoice}></Route>
         <Route path='/clientes' component={Cliente}></Route>
         <Route path='/produtos' component={Produto}></Route>
+        <Route path='/produto_tipo' component={Tipo_Produto}></Route>
+
 
         <Redirect from='*' to='/' />
     </Router>

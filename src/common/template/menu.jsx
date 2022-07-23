@@ -34,8 +34,10 @@ function GetMenuAdmin(){
         </MenuTree>
 
         <MenuTree label='Produto' icon='edit'> 
-            <MenuItem path='#billingCycles'
+            <MenuItem path='#produtos'
                 label='Listar produtos' icon='usd' />
+            <MenuItem path='#produto_tipo'
+                label='Listar tipos de produtos' icon='usd' />
             <MenuItem path='#billingCycles'
                 label='Cadastrar Produto' icon='usd' />
         </MenuTree>
