@@ -41,6 +41,14 @@ function GetMenuAdmin(){
             <MenuItem path='#billingCycles'
                 label='Cadastrar Produto' icon='usd' />
         </MenuTree>
+
+        <MenuTree label='Financeiro' icon='edit'> 
+            <MenuItem path='#produtos'
+                label='A receber' icon='usd' />
+
+            <MenuItem path='#billingCycles'
+                label='A pagar' icon='usd' />
+        </MenuTree>
     </ul>
     );
 }
