@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { toastr } from 'react-redux-toastr'
-import { reset as resetForm, initialize } from 'redux-form'
+import { reset as resetForm } from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
 
 const BASE_URL = 'http://localhost:3000'
@@ -15,7 +15,27 @@ export function getList() {
 }
 
 export function create(values) {
-    return submit(values, 'post')
+    //console.log(values)
+
+
+    return dispatch => {
+        axios.post(`${BASE_URL}/cliente`, values)
+        .then(resp => {
+            toastr.success(resp.data.message, 'Operação Realizada com sucesso.')
+            dispatch([
+                resetForm("clienteForm"),
+                getList(),
+                showTabs("tabCreate", "tabList"),
+                selectTab("tabList")
+            ])
+        })
+        .catch(e => {
+            console.log(e.response.data)
+    
+            toastr.error(e.response.data.message,  e.response.data.erro)
+        })
+    }
+ 
 }
 
 export function update(values) {

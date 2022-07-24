@@ -9,6 +9,8 @@ import { selectTab, showTabs } from '../common/tab/tabActions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import  List  from "./clienteList"
+import Form from "./clienteForm"
+import { create } from "./clienteActions"
 
 import TabHeader from "../common/tab/tabHeader"
 
@@ -37,6 +39,7 @@ class Cliente extends Component {
                                 <List/>
                             </TabContent>
                             <TabContent id='tabCreate'> 
+                                <Form onSubmit={this.props.create}/>
 
                             </TabContent>
                             <TabContent id='tabUpdate'>
@@ -55,7 +58,7 @@ class Cliente extends Component {
         )
     }
 }
-const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs, create}, dispatch)
 export default connect( null, mapDispatchToProps)(Cliente)
 
 
