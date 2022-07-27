@@ -14,8 +14,31 @@ export function getList() {
     }
 }
 
+
 export function create(values) {
-    return submit(values, 'post')
+    return dispatch => {
+        console.log(values)
+        values.id_tipo = parseInt(values.id_tipo)
+        values.valor_metragem = parseInt(values.valor_metragem)
+        values.valor_total = parseInt(values.valor_total)
+        values.espessura = parseInt(values.espessura)
+
+        axios.post(`${BASE_URL}/product`, values)
+        .then(resp => {
+            toastr.success(resp.data.message, 'Operação Realizada com sucesso.')
+            dispatch([
+                resetForm("productForm"),
+                getList(),
+                showTabs("tabCreate", "tabList"),
+                selectTab("tabList")
+            ])
+        })
+        .catch(e => {
+            console.log(e.response.data)
+    
+            toastr.error(e.response.data.message,  e.response.data.erro)
+        })
+    }
 }
 
 export function update(values) {

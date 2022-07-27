@@ -15,9 +15,6 @@ export function getList() {
 }
 
 export function create(values) {
-    //console.log(values)
-
-
     return dispatch => {
         axios.post(`${BASE_URL}/cliente`, values)
         .then(resp => {
@@ -35,7 +32,6 @@ export function create(values) {
             toastr.error(e.response.data.message,  e.response.data.erro)
         })
     }
- 
 }
 
 export function update(values) {
