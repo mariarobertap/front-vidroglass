@@ -8,7 +8,7 @@ class BillingCycleList extends Component {
     componentWillMount() {
         this.props.getList()
     }
-    renderRows() {
+    renderRow() {
         const list = this.props.list || []
 
         return list.map(bc => (

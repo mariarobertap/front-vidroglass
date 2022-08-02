@@ -12,7 +12,7 @@ class ProductTypeList extends Component {
         const list = this.props.list || []
 
         return list.map(bc => (
-            <tr key={bc._id}>
+            <tr key={bc.nome}>
                 <td>{bc.nome}</td>
                 <td>{bc.descricao}</td>
 

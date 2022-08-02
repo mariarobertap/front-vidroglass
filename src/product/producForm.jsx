@@ -1,15 +1,19 @@
 import React, {Component} from "react"
 import {reduxForm, Field} from "redux-form"
 import labelAndInput from "../common/form/labelAndInput"
+import ComboBox from "./comboBox"
 
 class ProductForm extends Component {
     render (){
+        const options = ['Monday', 'Tuesday', 'Thursday', 
+        'Friday', 'Saturday', 'Sunday']
 
         const {handleSubmit} = this.props
         return(
             
             <form role="form" onSubmit={handleSubmit}>
                 <div className="box-body">
+                    <ComboBox></ComboBox>
                     <Field name="id_tipo" component={labelAndInput} type="number"
                     label="Id tipo"  cols="12 4" placeholder="Informe o nome"/>
                     <Field name="valor_metragem" component={labelAndInput}  type="number"

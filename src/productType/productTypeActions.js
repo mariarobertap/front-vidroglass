@@ -14,9 +14,7 @@ export function getList() {
     }
 }
 
-export function create(values) {
-    return submit(values, 'post')
-}
+
 
 export function update(values) {
     return submit(values, 'put')
@@ -26,19 +24,28 @@ export function remove(values) {
     return submit(values, 'delete')
 }
 
-function submit(values, method) {
+export function create(values) {
     return dispatch => {
-        const id = values._id ? values._id : ''
-        axios[method](`${BASE_URL}/billingCycles/${id}`, values)
-            .then(resp => {
-                toastr.success('Sucesso', 'Operação Realizada com sucesso.')
-                dispatch(init())
-            })
-            .catch(e => {
-                e.response.data.errors.forEach(error => toastr.error('Erro', error))
-            })
+        console.log(values)
+
+        axios.post(`${BASE_URL}/product/type`, values)
+        .then(resp => {
+            toastr.success(resp.data.message, 'Operação Realizada com sucesso.')
+            dispatch([
+                resetForm("productTypeForm"),
+                getList(),
+                showTabs("tabCreate", "tabList"),
+                selectTab("tabList")
+            ])
+        })
+        .catch(e => {
+            console.log(e.response.data)
+    
+            toastr.error(e.response.data.message,  e.response.data.erro)
+        })
     }
 }
+
 
 export function showUpdate(billingCycle) {
     return [ 
