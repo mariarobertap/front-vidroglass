@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { getList } from '../productType/productTypeActions'
+import Grid from '../common/layout/grid'
 
 class ComboBox extends Component {
 
@@ -19,14 +20,16 @@ class ComboBox extends Component {
 
     render() {
         return (
-            <div>
-                <select name="cars" onClick={() => {
-                    console.log("CLICK")
-                    this.props.getList()}
-                } >
-                    {this.renderRows()}
-                </select>
-            </div>
+            <Grid cols="12 4">
+                <div>
+                        <label>Tipo do produto</label>
+
+                        <select className="form-control select2 select2-hidden-accessible" cols="12 4"  placeHolder= "teste" name="cars">
+                        {this.renderRows()}
+                        </select>
+                </div>
+              
+           </Grid>
         )
     }
 }
