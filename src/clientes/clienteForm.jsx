@@ -15,7 +15,7 @@ class ClienteForm extends Component {
                     <Field name="cpf" component={labelAndInput}
                     label="CPF"  cols="12 4" placeholder="Informe o CPF"/>
                     <Field name="telefone" component={labelAndInput}
-                    label="Telefone"  cols="12 4" placeholder="Informe o Telefone"/>
+                    label="Telefone"  cols="12 4" icon="fa fa-phone" placeholder="Informe o Telefone"/>
 
                 </div>
                 <div className="box-footer">

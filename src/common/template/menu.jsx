@@ -21,34 +21,38 @@ function GetMenuAdmin(){
     return (
         <ul className='sidebar-menu'>
         <MenuItem path='#/' label='Dashboard' icon='dashboard' />
-        <MenuTree label='Nota' icon='edit'> 
+        <MenuTree label='Nota' icon='money'> 
             <MenuItem path='#notas'
-                label='Gerar Nota' icon='usd' />
+                label='Nota' icon='edit' />
         </MenuTree>
         
-        <MenuTree label='Clientes' icon='edit'> 
+        <MenuTree label='Clientes' icon='user'> 
             <MenuItem path='#clientes'
-                label='Listar clientes' icon='usd' />
-            <MenuItem path='#clientes'
-                label='Cadastrar Enderecos' icon='usd' />
+                label='Clientes' icon='user-plus' />
         </MenuTree>
 
-        <MenuTree label='Produto' icon='edit'> 
+        <MenuTree label='Produto' icon='dropbox'> 
             <MenuItem path='#produtos'
-                label='Listar produtos' icon='usd' />
+                label='Produto' icon='edit' />
             <MenuItem path='#produto_tipo'
-                label='Listar tipos de produtos' icon='usd' />
-            <MenuItem path='#billingCycles'
-                label='Cadastrar Produto' icon='usd' />
+                label='Tipod de produto' icon='edit' />
         </MenuTree>
-
-        <MenuTree label='Financeiro' icon='edit'> 
+        <MenuTree label='Pagamento' icon='credit-card'> 
             <MenuItem path='#produtos'
-                label='A receber' icon='usd' />
+                label='Tipo de pagamento' icon='credit-card' />
+        </MenuTree>
+        <MenuTree label='Endereco' icon='home'> 
+            <MenuItem path='#produtos'
+                label='Endereço' icon='home' />
+        </MenuTree>
+        <MenuTree label='Financeiro' icon='bank'> 
+            <MenuItem path='#produtos'
+                label='A receber' icon='edit' />
 
             <MenuItem path='#billingCycles'
-                label='A pagar' icon='usd' />
+                label='A pagar' icon='edit' />
         </MenuTree>
+
     </ul>
     );
 }

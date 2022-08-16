@@ -37,17 +37,21 @@ class ProductForm extends Component {
                
                     <Combo
                      cols="12 4"
-                     label="cor" 
+                     label="Tipo do Produto" 
                      list={mylist}
                     ></Combo>
-                    <Field name="valor_metragem" component={labelAndInput}  type="number"
-                    label="valor_total"  cols="12 4" placeholder="Informe o CPF"/>
+                    <Field name="Valor Metragem" icon="fa fa-dollar"
+                    component={labelAndInput}  type="number"
+                    label="Valor Metragem"  cols="12 4" placeholder="Informe o valor da metragem (R$)"/>
                     <Field name="valor_total" component={labelAndInput}  type="number"
-                    label="valor_total"  cols="12 4" placeholder="Informe o CPF"/>
-                    <Field name="espessura" component={labelAndInput}  type="number"
-                    label="espessura"  cols="12 4" placeholder="Informe o Telefone"/>
-                    <Field name="cor" component={labelAndInput}  
-                    label="cor"  cols="12 4" placeholder="Informe o Telefone"/>
+                    label="Valor Total"   icon="fa fa-dollar" cols="12 4" placeholder="Informe o valor total caso exista (R$)"/>
+                    <Field name="Espessura" component={labelAndInput}  type="number"
+                    label="espessura"  cols="12 4" placeholder="Informe a espessura"/>
+                   <Combo
+                     cols="12 4"
+                     label="Cor" 
+                     list={["N/A", "Transparente", "Verde", "Amarelo", "Azul", "Vermelho"]}
+                    ></Combo>
                     
                 </div>
                 <div className="box-footer">
