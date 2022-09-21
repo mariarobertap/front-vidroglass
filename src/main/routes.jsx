@@ -8,7 +8,7 @@ import invoice from '../invoice/invoice'
 import Produto from '../product/product'
 import Tipo_Produto from '../productType/productType'
 import Pagamento from '../payment/payment'
-
+import Endereco from '../address/address'
 
 export default props => (
     <Router history={hashHistory}>
@@ -19,6 +19,7 @@ export default props => (
         <Route path='/produtos' component={Produto}></Route>
         <Route path='/produto_tipo' component={Tipo_Produto}></Route>
         <Route path='/pagamento' component={Pagamento}></Route>
+        <Route path='/endereco' component={Endereco}></Route>
 
 
 
