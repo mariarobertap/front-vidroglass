@@ -9,6 +9,7 @@ import billingCycleReducer from '../billingCycle/billingCycleReducer'
 import clienteReducer from '../clientes/clienteReducer'
 import productReducer from '../clientes/clienteReducer'
 import productTypeReducer from '../productType/productTypeReducer'
+import addressReducer from '../address/addressReducer'
 
 
 
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     produto: productReducer,
     tipo_produto: productTypeReducer,
     form: formReducer,
+    endereco: addressReducer,
     toastr: toastReducer
 
 })
