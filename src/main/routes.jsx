@@ -7,6 +7,7 @@ import Cliente from '../clientes/clientes'
 import invoice from '../invoice/invoice'
 import Produto from '../product/product'
 import Tipo_Produto from '../productType/productType'
+import Pagamento from '../payment/payment'
 
 
 export default props => (
@@ -17,6 +18,8 @@ export default props => (
         <Route path='/clientes' component={Cliente}></Route>
         <Route path='/produtos' component={Produto}></Route>
         <Route path='/produto_tipo' component={Tipo_Produto}></Route>
+        <Route path='/pagamento' component={Pagamento}></Route>
+
 
 
         <Redirect from='*' to='/' />

@@ -12,7 +12,6 @@ function GetMenu(props){
     const isAdmin = props.isAdmin;
     if (isAdmin) {
         return <GetMenuAdmin />;
-
     }
 
 }
@@ -38,7 +37,7 @@ function GetMenuAdmin(){
                 label='Tipod de produto' icon='edit' />
         </MenuTree>
         <MenuTree label='Pagamento' icon='credit-card'> 
-            <MenuItem path='#produtos'
+            <MenuItem path='#pagamento'
                 label='Tipo de pagamento' icon='credit-card' />
         </MenuTree>
         <MenuTree label='Endereco' icon='home'> 
