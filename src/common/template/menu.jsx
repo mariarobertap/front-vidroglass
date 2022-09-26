@@ -17,6 +17,7 @@ function GetMenuAdmin() {
       <MenuItem path="#/" label="Dashboard" icon="dashboard" />
       <MenuTree label="Nota" icon="money">
         <MenuItem path="#notas" label="Nota" icon="edit" />
+        <MenuItem path="#notas" label="Gerar nota" icon="edit" />
       </MenuTree>
 
       <MenuTree label="Clientes" icon="user">

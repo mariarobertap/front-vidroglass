@@ -16,12 +16,16 @@ export function getList() {
 
 
 export function create(values) {
+    var id_tipo
     return dispatch => {
-        console.log(values)
+
+        id_tipo = values.id_tipo.split("-")
+        values.id_tipo = id_tipo[0]
         values.id_tipo = parseInt(values.id_tipo)
         values.valor_metragem = parseInt(values.valor_metragem)
         values.valor_total = parseInt(values.valor_total)
-        values.espessura = parseInt(values.espessura)
+        values.espessura = parseFloat(values.espessura)
+
 
         axios.post(`${BASE_URL}/product`, values)
         .then(resp => {
