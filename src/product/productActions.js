@@ -22,8 +22,10 @@ export function create(values) {
         id_tipo = values.id_tipo.split("-")
         values.id_tipo = id_tipo[0]
         values.id_tipo = parseInt(values.id_tipo)
-        values.valor_metragem = parseInt(values.valor_metragem)
-        values.valor_total = parseInt(values.valor_total)
+        values.valor_total  =  values.valor_total.replace(",", ".");
+        values.valor_total = parseFloat(values.valor_total)
+        values.valor_metragem  =  values.valor_metragem.replace(",", ".");
+        values.valor_metragem = parseFloat(values.valor_metragem)
         values.espessura = parseFloat(values.espessura)
 
 

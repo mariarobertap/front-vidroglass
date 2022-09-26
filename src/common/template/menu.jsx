@@ -25,8 +25,8 @@ function GetMenuAdmin() {
       </MenuTree>
 
       <MenuTree label="Produto" icon="dropbox">
+        <MenuItem path="#produto_tipo" label="Tipo de Produto" icon="edit" />
         <MenuItem path="#produtos" label="Produto" icon="edit" />
-        <MenuItem path="#produto_tipo" label="Tipod de produto" icon="edit" />
       </MenuTree>
       <MenuTree label="Pagamento" icon="credit-card">
         <MenuItem
