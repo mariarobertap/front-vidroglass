@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import labelAndInput from "../common/form/labelAndInput";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { init } from "./paymentActions";
 
-class ClienteForm extends Component {
+class PaymentForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -27,4 +30,8 @@ class ClienteForm extends Component {
   }
 }
 
-export default reduxForm({ form: "clienteForm" })(ClienteForm);
+PaymentForm = reduxForm({ form: "paymentForm", destroyOnUnmount: false })(
+  PaymentForm
+);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ init }, dispatch);
+export default connect(mapDispatchToProps)(PaymentForm);
