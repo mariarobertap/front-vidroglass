@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { reduxForm, Field } from "redux-form";
+import { reduxForm, Field, formValueSelector } from "redux-form";
 import labelAndInput from "../common/form/labelAndInput";
-
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import ComboBox from "./comboBox";
 import Combo from "../common/form/comboBox";
 import axios from "axios";
+import { init } from "./productActions";
 
 class ProductForm extends Component {
   constructor(props) {
@@ -72,7 +74,8 @@ class ProductForm extends Component {
             icon="fa fa-dollar"
             cols="12 4"
             id="currency2"
-            value="0"
+            value="teste"
+            defaultValue="9218309128"
             placeholder="Informe o valor total caso exista (R$)"
           />
           <Field
@@ -107,6 +110,13 @@ class ProductForm extends Component {
           <button type="submit" className="btn btn-primary">
             Submit!
           </button>
+          <button
+            type="button"
+            className="btn btn-default"
+            onClick={this.props.init}
+          >
+            Cancelar
+          </button>
         </div>
       </form>
     );
@@ -133,5 +143,13 @@ function maskCurrency(value) {
   return value;
 }
 
-const mapStateToProps = (state) => ({ list: state.tipo_produto.list });
-export default reduxForm({ form: "productForm" })(ProductForm);
+ProductForm = reduxForm({ form: "productForm", destroyOnUnmount: false })(
+  ProductForm
+);
+const selector = formValueSelector("productForm");
+const mapStateToProps = (state) => ({
+  list: selector(state, state.tipo_produto.list),
+});
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ init }, dispatch);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductForm);

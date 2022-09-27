@@ -8,7 +8,7 @@ import TabContent from "../common/tab/tabContent";
 import { selectTab, showTabs } from "../common/tab/tabActions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { create } from "./productActions";
+import { create, remove } from "./productActions";
 import List from "./productList";
 import Form from "./producForm";
 
@@ -19,6 +19,7 @@ class Product extends Component {
     this.props.selectTab("tabList");
     this.props.showTabs("tabList", "tabCreate");
   }
+
   render() {
     return (
       <div>
@@ -39,7 +40,14 @@ class Product extends Component {
                 <Form onSubmit={this.props.create} />
               </TabContent>
               <TabContent id="tabUpdate"></TabContent>
-              <TabContent id="tabDelete"></TabContent>
+              <TabContent id="tabDelete">
+                <Form
+                  onSubmit={this.props.remove}
+                  readOnly={true}
+                  submitLabel="Excluir"
+                  submitClass="danger"
+                />
+              </TabContent>
             </TabsContent>
           </Tabs>
         </Content>
@@ -48,5 +56,5 @@ class Product extends Component {
   }
 }
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ selectTab, showTabs, create }, dispatch);
+  bindActionCreators({ selectTab, showTabs, create, remove }, dispatch);
 export default connect(null, mapDispatchToProps)(Product);

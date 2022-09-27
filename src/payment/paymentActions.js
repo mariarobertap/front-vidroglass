@@ -1,15 +1,15 @@
 import axios from 'axios'
 import { toastr } from 'react-redux-toastr'
-import { reset as resetForm } from 'redux-form'
+import { reset as resetForm , initialize} from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
 
 const BASE_URL = 'http://localhost:3000'
-const INITIAL_VALUES = {credits: [{}], debts: [{}]}
+const INITIAL_VALUES = {list: []}
 
 export function getList() {
     const request = axios.get(`${BASE_URL}/paymentform`)
     return {
-        type: 'BILLING_CYCLES_FETCHED',
+        type: 'PAYMENTS_FETCHED',
         payload: request
     }
 }
@@ -20,7 +20,7 @@ export function create(values) {
         .then(resp => {
             toastr.success(resp.data.message, 'Operação Realizada com sucesso.')
             dispatch([
-                resetForm("clienteForm"),
+                resetForm("paymentForm"),
                 getList(),
                 showTabs("tabCreate", "tabList"),
                 selectTab("tabList")
@@ -35,13 +35,31 @@ export function create(values) {
 }
 
 
+export function remove(values) {
+    return submit(values, 'delete')
+}
+
+function submit(values, method) {
+    return dispatch => {
+        const id = values.idpagamento ? values.idpagamento : ''
+        axios[method](`${BASE_URL}/paymentform/${id}`, values)
+            .then(resp => {
+                toastr.success('Sucesso', 'Operação Realizada com sucesso.')
+                dispatch(init())
+            })
+            .catch(e => {
+                e.response.data.errors.forEach(error => toastr.error('Erro', error))
+            })
+    }
+}
+
 
 
 export function showUpdate(billingCycle) {
     return [ 
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
-        initialize('billingCycleForm', billingCycle)
+        initialize('paymentForm', billingCycle)
     ]
 }
 
@@ -49,7 +67,7 @@ export function showDelete(billingCycle) {
     return [ 
         showTabs('tabDelete'),
         selectTab('tabDelete'),
-        initialize('billingCycleForm', billingCycle)
+        initialize('paymentForm', billingCycle)
     ]
 }
 
@@ -58,6 +76,6 @@ export function init() {
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
         getList(),
-        initialize('billingCycleForm', INITIAL_VALUES)
+        initialize('paymentForm', INITIAL_VALUES)
     ]
 }
