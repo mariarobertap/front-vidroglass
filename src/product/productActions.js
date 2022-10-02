@@ -8,8 +8,9 @@ const INITIAL_VALUES = {credits: [{}], debts: [{}]}
 
 export function getList() {
     const request = axios.get(`${BASE_URL}/product`)
+
     return {
-        type: 'BILLING_CYCLES_FETCHED',
+        type: 'PRODUCT_FETCHED',
         payload: request
     }
 }
@@ -73,7 +74,7 @@ export function showUpdate(billingCycle) {
     return [ 
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
-        initialize('billingCycleForm', billingCycle)
+        initialize('productForm', billingCycle)
     ]
 }
 
@@ -81,7 +82,7 @@ export function showDelete(billingCycle) {
     return [ 
         showTabs('tabDelete'),
         selectTab('tabDelete'),
-        initialize('billingCycleForm', billingCycle)
+        initialize('productForm', billingCycle)
     ]
 }
 
@@ -90,6 +91,6 @@ export function init() {
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
         getList(),
-        initialize('billingCycleForm', INITIAL_VALUES)
+        initialize('productForm', INITIAL_VALUES)
     ]
 }

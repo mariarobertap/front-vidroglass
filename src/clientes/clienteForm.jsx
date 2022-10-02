@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import labelAndInput from "../common/form/labelAndInput";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { init } from "./clienteActions";
 
 class ClienteForm extends Component {
   componentDidMount() {
@@ -50,4 +53,8 @@ class ClienteForm extends Component {
   }
 }
 
-export default reduxForm({ form: "clienteForm" })(ClienteForm);
+ClienteForm = reduxForm({ form: "clienteForm", destroyOnUnmount: false })(
+  ClienteForm
+);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ init }, dispatch);
+export default connect(mapDispatchToProps)(ClienteForm);

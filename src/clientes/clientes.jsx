@@ -10,7 +10,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import List from "./clienteList";
 import Form from "./clienteForm";
-import { create } from "./clienteActions";
+import { create, remove } from "./clienteActions";
 
 import TabHeader from "../common/tab/tabHeader";
 
@@ -39,7 +39,16 @@ class Cliente extends Component {
                 <Form onSubmit={this.props.create} />
               </TabContent>
               <TabContent id="tabUpdate"></TabContent>
-              <TabContent id="tabDelete"></TabContent>
+              <TabContent id="tabDelete">
+                <TabContent id="tabDelete">
+                  <Form
+                    onSubmit={this.props.remove}
+                    readOnly={true}
+                    submitLabel="Excluir"
+                    submitClass="danger"
+                  />
+                </TabContent>
+              </TabContent>
             </TabsContent>
           </Tabs>
         </Content>
@@ -48,5 +57,5 @@ class Cliente extends Component {
   }
 }
 const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ selectTab, showTabs, create }, dispatch);
+  bindActionCreators({ selectTab, showTabs, create, remove }, dispatch);
 export default connect(null, mapDispatchToProps)(Cliente);

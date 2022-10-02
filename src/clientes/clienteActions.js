@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { toastr } from 'react-redux-toastr'
-import { reset as resetForm } from 'redux-form'
+import { reset as resetForm, initialize} from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
 
 const BASE_URL = 'http://localhost:3000'
@@ -9,7 +9,7 @@ const INITIAL_VALUES = {credits: [{}], debts: [{}]}
 export function getList() {
     const request = axios.get(`${BASE_URL}/cliente`)
     return {
-        type: 'BILLING_CYCLES_FETCHED',
+        type: 'ClIENTT_FETCHED',
         payload: request
     }
 }
@@ -44,8 +44,9 @@ export function remove(values) {
 
 function submit(values, method) {
     return dispatch => {
-        const id = values._id ? values._id : ''
-        axios[method](`${BASE_URL}/billingCycles/${id}`, values)
+        const id = values.idcliente ? values.idcliente : ''
+
+        axios[method](`${BASE_URL}/cliente/${id}`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação Realizada com sucesso.')
                 dispatch(init())
@@ -60,7 +61,7 @@ export function showUpdate(billingCycle) {
     return [ 
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
-        initialize('billingCycleForm', billingCycle)
+        initialize('clienteForm', billingCycle)
     ]
 }
 
@@ -68,7 +69,7 @@ export function showDelete(billingCycle) {
     return [ 
         showTabs('tabDelete'),
         selectTab('tabDelete'),
-        initialize('billingCycleForm', billingCycle)
+        initialize('clienteForm', billingCycle)
     ]
 }
 
@@ -76,7 +77,6 @@ export function init() {
     return [
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
-        getList(),
-        initialize('billingCycleForm', INITIAL_VALUES)
+        initialize('clienteForm', INITIAL_VALUES)
     ]
 }
