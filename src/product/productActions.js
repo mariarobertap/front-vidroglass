@@ -58,7 +58,7 @@ export function remove(values) {
 
 function submit(values, method) {
     return dispatch => {
-        const id = values._id ? values._id : ''
+        const id = values.id_produto ? values.id_produto : ''
         axios[method](`${BASE_URL}/product/${id}`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação Realizada com sucesso.')
@@ -90,7 +90,6 @@ export function init() {
     return [
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
-        getList(),
         initialize('productForm', INITIAL_VALUES)
     ]
 }
