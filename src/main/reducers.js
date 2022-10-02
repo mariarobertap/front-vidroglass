@@ -11,6 +11,7 @@ import productReducer from '../product/productReducer'
 import productTypeReducer from '../productType/productTypeReducer'
 import addressReducer from '../address/addressReducer'
 import PaymentReducer from '../payment/paymentReducer'
+import NotaReducer from '../gerarNota/notaReducer'
 
 
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     produto: productReducer,
     tipo_produto: productTypeReducer,
     payment: PaymentReducer,
+    nota: NotaReducer,
     form: formReducer,
     endereco: addressReducer,
     toastr: toastReducer

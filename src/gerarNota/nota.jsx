@@ -6,16 +6,15 @@ import TabsHeader from "../common/tab/tabsHeader";
 import TabsContent from "../common/tab/tabsContent";
 import TabContent from "../common/tab/tabContent";
 import { selectTab, showTabs } from "../common/tab/tabActions";
-import { create, remove } from "./productTypeActions";
-
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import List from "./productTypeList";
-import Form from "./productTypeForm";
+import List from "./notaList";
+import Form from "./notaForm";
+import { create, remove } from "./notaActions";
 
 import TabHeader from "../common/tab/tabHeader";
 
-class ProductType extends Component {
+class Nota extends Component {
   componentWillMount() {
     this.props.selectTab("tabList");
     this.props.showTabs("tabList", "tabCreate");
@@ -23,7 +22,7 @@ class ProductType extends Component {
   render() {
     return (
       <div>
-        <ContentHeader title="Tipo de Produto" small="cadastro"></ContentHeader>
+        <ContentHeader title="Pagamento" small="cadastro"></ContentHeader>
         <Content>
           <Tabs>
             <TabsHeader>
@@ -57,4 +56,4 @@ class ProductType extends Component {
 }
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ selectTab, showTabs, create, remove }, dispatch);
-export default connect(null, mapDispatchToProps)(ProductType);
+export default connect(null, mapDispatchToProps)(Nota);

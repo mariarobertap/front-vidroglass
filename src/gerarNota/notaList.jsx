@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getList, showUpdate, showDelete } from "./addressActions";
+import { getList, showUpdate, showDelete } from "./notaActions";
 
-class BillingCycleList extends Component {
+class NotaList extends Component {
   componentWillMount() {
     this.props.getList();
   }
@@ -11,13 +11,12 @@ class BillingCycleList extends Component {
     const list = this.props.list || [];
 
     return list.map((bc) => (
-      <tr key={bc.id_address}>
-        <td>{bc.id_customer}</td>
-        <td>{bc.street}</td>
-        <td>{bc.number}</td>
-        <td>{bc.cep}</td>
-        <td>{bc.city}</td>
-        <td>{bc.state}</td>
+      <tr key={bc.id_nota}>
+        <td>{bc.Id_pagamento}</td>
+        <td>{bc.tipo_nota}</td>
+        <td>{bc.data}</td>
+        <td>{bc.valor_total}</td>
+        <td>{bc.cliente.nome}</td>
 
         <td>
           <button
@@ -43,12 +42,11 @@ class BillingCycleList extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th>Id Cliente</th>
-              <th>Street</th>
-              <th>Number</th>
-              <th>Cep</th>
-              <th>City</th>
-              <th>State</th>
+              <th>Id Pagamento</th>
+              <th>Tipo da nota</th>
+              <th>data</th>
+              <th>Valor total</th>
+              <th>Cliente</th>
 
               <th className="table-actions">Ações</th>
             </tr>
@@ -60,7 +58,7 @@ class BillingCycleList extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ list: state.endereco.list });
+const mapStateToProps = (state) => ({ list: state.nota.list });
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ getList, showUpdate, showDelete }, dispatch);
-export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleList);
+export default connect(mapStateToProps, mapDispatchToProps)(NotaList);

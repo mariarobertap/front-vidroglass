@@ -47,11 +47,25 @@ export function create(values) {
 }
 
 
+function submit(values, method) {
+    return dispatch => {
+        const id = values.id_tipo ? values.id_tipo : ''
+        axios[method](`${BASE_URL}/product/type/${id}`, values)
+            .then(resp => {
+                toastr.success('Sucesso', 'Operação Realizada com sucesso.')
+                dispatch(init())
+            })
+            .catch(e => {
+                e.response.data.errors.forEach(error => toastr.error('Erro', error))
+            })
+    }
+}
+
 export function showUpdate(billingCycle) {
     return [ 
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
-        initialize('billingCycleForm', billingCycle)
+        initialize('productTypeForm', billingCycle)
     ]
 }
 
@@ -59,7 +73,7 @@ export function showDelete(billingCycle) {
     return [ 
         showTabs('tabDelete'),
         selectTab('tabDelete'),
-        initialize('billingCycleForm', billingCycle)
+        initialize('productTypeForm', billingCycle)
     ]
 }
 
@@ -68,6 +82,6 @@ export function init() {
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
         getList(),
-        initialize('billingCycleForm', INITIAL_VALUES)
+        initialize('productTypeForm', INITIAL_VALUES)
     ]
 }

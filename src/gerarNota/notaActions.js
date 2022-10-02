@@ -7,9 +7,9 @@ const BASE_URL = 'http://localhost:3000'
 const INITIAL_VALUES = {credits: [{}], debts: [{}]}
 
 export function getList() {
-    const request = axios.get(`${BASE_URL}/address`)
+    const request = axios.get(`${BASE_URL}/nota`)
     return {
-        type: 'ADDRESS_FETCHED',
+        type: 'NOTA_FETCHED',
         payload: request
     }
 }
@@ -19,11 +19,11 @@ export function create(values) {
         values.id_customer = parseInt(values.id_customer)
         values.number = parseInt(values.number)
 
-        axios.post(`${BASE_URL}/address`, values)
+        axios.post(`${BASE_URL}/nota`, values)
         .then(resp => {
             toastr.success(resp.data.message, 'Operação Realizada com sucesso.')
             dispatch([
-                resetForm("addressForm"),
+                resetForm("notaForm"),
                 getList(),
                 showTabs("tabCreate", "tabList"),
                 selectTab("tabList")
@@ -50,7 +50,7 @@ function submit(values, method) {
     return dispatch => {
         const id = values.id_address ? values.id_address : ''
 
-        axios[method](`${BASE_URL}/address/${id}`, values)
+        axios[method](`${BASE_URL}/nota/${id}`, values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação Realizada com sucesso.')
                 dispatch(init())
@@ -66,7 +66,7 @@ export function showUpdate(billingCycle) {
     return [ 
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
-        initialize('addressForm', billingCycle)
+        initialize('notaForm', billingCycle)
     ]
 }
 
@@ -74,7 +74,7 @@ export function showDelete(billingCycle) {
     return [ 
         showTabs('tabDelete'),
         selectTab('tabDelete'),
-        initialize('addressForm', billingCycle)
+        initialize('notaForm', billingCycle)
     ]
 }
 
@@ -83,6 +83,6 @@ export function init() {
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
         getList(),
-        initialize('addressForm', INITIAL_VALUES)
+        initialize('notaForm', INITIAL_VALUES)
     ]
 }

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import labelAndInput from "../common/form/labelAndInput";
-
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { init } from "./productTypeActions";
 class ProductTypeForm extends Component {
   render() {
     const { handleSubmit } = this.props;
@@ -35,4 +37,9 @@ class ProductTypeForm extends Component {
   }
 }
 
-export default reduxForm({ form: "productTypeForm" })(ProductTypeForm);
+ProductTypeForm = reduxForm({
+  form: "productTypeForm",
+  destroyOnUnmount: false,
+})(ProductTypeForm);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ init }, dispatch);
+export default connect(mapDispatchToProps)(ProductTypeForm);

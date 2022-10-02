@@ -3,9 +3,9 @@ import { reduxForm, Field } from "redux-form";
 import labelAndInput from "../common/form/labelAndInput";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { init } from "./addressActions";
+import { init } from "./notaActions";
 
-class AddressForm extends Component {
+class NotaForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -68,9 +68,9 @@ class AddressForm extends Component {
   }
 }
 
-AddressForm = reduxForm({
-  form: "addressForm",
+NotaForm = reduxForm({
+  form: "notaForm",
   destroyOnUnmount: false,
-})(AddressForm);
+})(NotaForm);
 const mapDispatchToProps = (dispatch) => bindActionCreators({ init }, dispatch);
-export default connect(mapDispatchToProps)(AddressForm);
+export default connect(mapDispatchToProps)(NotaForm);
