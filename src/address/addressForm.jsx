@@ -4,18 +4,36 @@ import labelAndInput from "../common/form/labelAndInput";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { init } from "./addressActions";
+import Combo from "../common/form/comboBox";
+import axios from "axios";
 
 class AddressForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { list: [] };
+  }
+  componentWillMount() {
+    axios
+      .get(`http://localhost:3000/cliente`)
+      .then((resp) => this.setState({ list: resp.data }));
+  }
   render() {
+    var { list } = this.state || [1, 2];
+    var mylist = [];
+
+    list.forEach((value, i) => {
+      mylist.push(value.idcliente + " - " + value.nome);
+    });
     const { handleSubmit } = this.props;
     return (
       <form role="form" onSubmit={handleSubmit}>
         <div className="box-body">
           <Field
             name="id_customer"
-            component={labelAndInput}
+            component={Combo}
             label="id_customer"
             cols="12 4"
+            list={mylist}
             placeholder="Informe o id_customer"
           />
           <Field
